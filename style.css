@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 :root{
     --spacing: 1rem;
     font-size: 1rem;
@@ -22,27 +24,67 @@
 }
     */
 
-main,
-header{
+main{
     padding: var(--spacing);
 }
 
+header{
+    padding: var(--spacing);
+    background-color:var(--grey);
+    color: white;
+}
+
+/*header > p :nth-child(1), header > p :nth-child(3) {
+    font-weight: 600;
+}
+    */
+
+h1, h2, h3{
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
 h1{
-    @media (width > 800px) {
+    /*@media (width > 800px) {
         font-size: 4rem;
     }
+        */
+    
+    font-size: 3.5rem;
+    font-style: italic;
+    color: white;
 }
 
 h2{
-    font-size:4rem;
+    font-size: 3rem;
     color:black;
     background-color:var(--grey);
 }
+
 h3{
-    font-size:2rem;
+    font-size: 2rem;
     background-color:var(--yellow);
     color:black;
 }
+
 p{
     margin-block-start: calc(2*var(--spacing));
+    font-family: "Inter", sans-serif;
+}
+
+section p:first-of-type:first-letter {
+  font-size: 2rem;
+  font-family: "Playfair Display";
+  font-weight: 600;
+}
+
+.h1-em {
+    font-weight: 600;
+    font-family: 'Inter';
+    font-style: normal;
+    color:var(--yellow);
+}
+
+.bold-text{
+    font-weight: 700;
 }
