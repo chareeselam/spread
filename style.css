@@ -13,6 +13,15 @@
     }
 }
 
+/* for print
+@media print{
+    : root{
+        --color-bg: white;
+        --color-fg: black;
+    }
+}
+    */
+
 main,
 header{
     padding: var(--spacing);
