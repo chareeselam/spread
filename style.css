@@ -1,4 +1,26 @@
 :root{
+    --spacing: 1rem;
     font-size: 1rem;
     font-family: 'Helvetica', sans-serif;
+}
+
+@media(width>600px) {
+    :root{
+        font-size: 150%;
+    }
+}
+
+body{
+    padding: var(--spacing);
+}
+
+h1{
+    padding: 2rem;
+    @media (width > 800px) {
+        font-size: 4rem;
+    }
+}
+
+p{
+    margin-block-start: calc(2*var(--spacing));
 }
