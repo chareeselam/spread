@@ -2,6 +2,9 @@
     --spacing: 1rem;
     font-size: 1rem;
     font-family: 'Helvetica', sans-serif;
+
+    --grey:#5B5B5B;
+    --yellow:#FFD971;
 }
 
 @media(width>600px) {
@@ -22,7 +25,14 @@ h1{
 }
 
 h2{
-
+    font-size:4rem;
+    color:black;
+    background-color:var(--grey);
+}
+h3{
+    font-size:2rem;
+    background-color:var(--yellow);
+    color:black;
 }
 p{
     margin-block-start: calc(2*var(--spacing));
