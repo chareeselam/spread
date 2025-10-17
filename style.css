@@ -10,17 +10,20 @@
     }
 }
 
-body{
+main,
+header{
     padding: var(--spacing);
 }
 
 h1{
-    padding: 2rem;
     @media (width > 800px) {
         font-size: 4rem;
     }
 }
 
+h2{
+
+}
 p{
     margin-block-start: calc(2*var(--spacing));
 }
