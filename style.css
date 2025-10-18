@@ -86,8 +86,30 @@ header ol{
     align-items:start;
 }
 
+/* header div ol {
+    display: flex;
+    flex-direction: column;
+    padding-block: calc(-1*var(--spacing));
+    align-items: start;
+} */
+
 /* h3+p{
     margin-block-start: calc(1.5*var(--spacing));
+} */
+/* 
+.outer-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--spacing);
+}
+
+.left-box {
+    padding: var(--spacing);
+}
+
+.right-box {
+    padding: var(--spacing);
 } */
 
 section p:first-of-type:first-letter,
