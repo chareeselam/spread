@@ -157,6 +157,6 @@ a{
 
 .conclusion{
     background-color: var(--yellow);
-    padding: var(--spacing);
+    padding-block: var(--spacing);
     margin-block-end:initial;
 }
