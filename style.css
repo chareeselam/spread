@@ -65,7 +65,7 @@ h2{
 }
 
 h3{
-    font-size: 2rem;
+    font-size: 1.8rem;
     background-color:var(--yellow);
     color:black;
     margin: var(--spacing);
