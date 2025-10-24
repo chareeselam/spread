@@ -6,7 +6,8 @@
     --body-font: "Inter", sans-serif;
 
     --grey:#5B5B5B;
-    --yellow:#FFD971;
+    /* --yellow:#FFD971; */
+    --yellow:#98cdff;
 }
 
 @media(width>550px) {
@@ -17,6 +18,10 @@
     p {
         inline-size: 60ch;
     }
+
+    /* h1 {
+        inline-size: ;
+    } */
 }
 
 /* for print
@@ -115,13 +120,12 @@ header ol{
     } */
 
     header ol {
-        display: flex;
-        flex-direction: row;
-        align-items: start;
-        /* flex: 25% 25% 50%; */
+        display:grid;
+        grid-template-columns: repeat(2, 12rem) 1fr;
+        align-items:start;
     }
 
-    header ol:nth-child(3) {
+    header ol :nth-child(3) {
         flex-grow: 1;
     }    
 }
@@ -159,6 +163,16 @@ blockquote p{
     margin-inline-start: -0.5em;
 }
 
+/* .blockquote-p {
+    background-color: var(--yellow);
+    padding-block:calc(2*var(--spacing));
+    padding-inline: calc(2*var(--spacing));
+    font-size: 1.3rem;
+    font-family: var(--heading-font);
+    line-height: calc(1.4*var(--spacing));
+    margin-inline-start: -0.5em;
+} */
+
 blockquote p::before {
 	content: '“'; /* Add the quotes themselves via pseudo-elements. */
 	margin-inline-start: -0.6em; /* Manually adjust this. */
@@ -173,9 +187,11 @@ blockquote p::after {
 }
 
 a{
-    color: var(--black);
+    color: #44a4ff;
     text-decoration: underline;
-    text-decoration-thickness: 10%;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--black);
+    text-decoration-thickness: 15%;
     text-underline-offset: 10%;
     &:hover {
     color: var(--black);
