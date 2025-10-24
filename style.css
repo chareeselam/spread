@@ -48,6 +48,7 @@ h1, h2, h3{
 
 h1{
     font-size: 3.5rem;
+    line-height: calc(2.5*var(--spacing));
     font-style: italic;
     color: white;
     /*@media (width > 800px) {
@@ -78,7 +79,7 @@ p{
     margin-block-start: var(--spacing);
     font-family: var(--body-font);
     font-size: 1.1rem;
-    line-height:1.8rem;
+    line-height: calc(1.3*var(--spacing));
     padding-inline: var(--spacing);
 }
 
@@ -147,3 +148,31 @@ a{
     padding-block-end: calc(2*var(--spacing));
     margin-block-end:initial;
 }
+
+.timeline {
+  position: relative;
+  border-inline-start: 0.25rem solid var(--yellow);
+  margin-inline-start: 1rem;
+  padding-inline-start: calc(0.1*var(--spacing));
+}
+
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transform: translateX(-60%);
+  width: calc(0.7*var(--spacing));
+  height: calc(0.7*var(--spacing));
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.timeline::before {
+  top: 0;
+}
+
+.timeline::after {
+  bottom: 0;
+}
+
