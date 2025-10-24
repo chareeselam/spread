@@ -77,8 +77,8 @@ h3{
 p{
     margin-block-start: var(--spacing);
     font-family: var(--body-font);
-    font-size: 1.2rem;
-    line-height:1.7rem;
+    font-size: 1.1rem;
+    line-height:1.8rem;
     padding-inline: var(--spacing);
 }
 
