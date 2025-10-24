@@ -167,7 +167,7 @@ blockquote p::after { content: '”'; }
 
 blockquote p::before,
 blockquote p::after {
-	color: tomato;
+	color: var(--black);
 	font-family: var(--heading-font); /* You have much more control this way! */
     font-size: 1.3rem;
 }
