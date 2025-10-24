@@ -62,7 +62,8 @@ h2{
     color:black;
     background-color:var(--grey);
     padding-inline: var(--spacing);
-    padding-block-end: calc(0.7*var(--spacing));
+    padding-block-end: calc(0.5*var(--spacing));
+    margin-block-start: calc(-1*var(--spacing));
 }
 
 h3{
@@ -150,10 +151,14 @@ a{
 }
 
 .timeline {
-  position: relative;
-  border-inline-start: 0.25rem solid var(--yellow);
-  margin-inline-start: 1rem;
-  padding-inline-start: calc(0.1*var(--spacing));
+    position: relative;
+    border-inline-start: 0.25rem solid var(--yellow);
+    margin-inline-start: 1rem;
+    padding-inline-start: calc(0.1*var(--spacing));
+}
+
+.text-chunk {
+    padding-block: var(--spacing);
 }
 
 .timeline::before,
@@ -166,13 +171,17 @@ a{
   height: calc(0.7*var(--spacing));
   border-radius: 50%;
   background: var(--yellow);
+
 }
 
 .timeline::before {
-  top: 0;
+  top: calc(-0.37*var(--spacing));
 }
 
 .timeline::after {
-  bottom: 0;
+  bottom: calc(-0.37*var(--spacing));
 }
 
+.constructivism {
+    padding-inline-start: var(--spacing);
+}
