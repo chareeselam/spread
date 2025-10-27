@@ -14,7 +14,7 @@
 /* ------------ layout ------------- */
 header,
 footer{
-    padding: var(--spacing);
+    padding: calc(var(--spacing));
     background-color:var(--grey);
     color: white;
 }
@@ -51,11 +51,11 @@ h3{
     font-size: calc(1.5*var(--spacing));
     background-color:var(--blue);
     color:black;
-    margin-inline: calc(1.2*var(--spacing));
+    margin-inline: var(--spacing);
     margin-block-start: calc(4*var(--spacing));
     margin-block-end: calc(1*var(--spacing));
     padding-block: calc(0.5*var(--spacing));
-    padding-inline: calc(0.8*var(--spacing));
+    padding-inline-start: calc(0.5*var(--spacing));
     inline-size: fit-content;
     line-height: calc(2.4*var(--spacing));
 }
@@ -73,6 +73,13 @@ header p {
   margin: initial;
   padding-inline: initial;
   padding-block: var(--spacing);
+}
+
+header ol{
+    display:flex;
+    flex-direction:column;
+    align-items:start;
+    gap: calc(0.5*var(--spacing));
 }
 
 header ol{
@@ -106,6 +113,9 @@ section:nth-of-type(3) p:nth-of-type(2)::first-letter {
     font-style:italic;
 }
 
+footer p{
+    font-family: var(--body-font);
+}
 /* ------------ blockquote ------------- */
 blockquote {
     background-color: var(--blue);
@@ -154,15 +164,16 @@ a {
   color: black;
   text-decoration: underline;
   text-decoration-style: solid;
-  text-decoration-color: var(--blue); /* or var(--black) if you've defined it */
-  text-decoration-thickness: 15%;
+  text-decoration-color: black; /* or var(--black) if you've defined it */
+  text-decoration-thickness: 10%;
   text-underline-offset: 15%;
 }
 
 a:hover {
   color: black;
+  /* font-weight: 500; */
   background: var(--blue);
-  text-decoration-color: black; /* reapply on hover to stay consistent */
+  text-decoration-color: black;
 }
 
 .conclusion{
@@ -180,8 +191,15 @@ a:hover {
 }
 
 .text-chunk {
-    padding-block-start: calc(0.5*var(--spacing));
+    padding-block-start: var(--spacing);
     padding-block-end: calc(6*var(--spacing));
+    /* padding-inline-start: var(--spacing); */
+}
+
+.non-timeline-text-chunk {
+    padding-block-start: var(--spacing);
+    padding-block-end: calc(6*var(--spacing));
+    padding-inline: var(--spacing);
 }
 
 /* section:first-child{
@@ -210,8 +228,36 @@ a:hover {
   bottom: calc(-0.37*var(--spacing));
 }
 
-.callout{
+.highlight{
     background: var(--highlight);
+}
+
+@media(width>800px) {
+    blockquote {
+        padding-inline: calc(3 * var(--spacing));
+    }
+
+    blockquote p {
+        max-inline-size: 60ch;
+        margin-inline: auto;
+        padding-inline: initial;
+        padding-block: calc(0.5*var(--spacing));
+        font-size: calc(1.2*var(--spacing));
+        line-height: calc(2*var(--spacing));
+    }
+
+    h1 {
+        max-inline-size: 25ch;
+        font-size: calc(4 * var(--spacing));
+        line-height: calc(4.5 * var(--spacing));
+    }
+
+    header,
+    footer{
+    padding: calc(var(--spacing));
+    background-color:var(--grey);
+    color: white;
+}
 }
 
 @media(width>1000px) {
@@ -228,6 +274,11 @@ a:hover {
     header ol:nth-child(3) {
         flex-grow: 1;
     }    
+
+    footer ol{
+        display:flex;
+        justify-content: space-between;
+    }
     
     header, footer {
         padding: calc(3*var(--spacing));
@@ -235,6 +286,10 @@ a:hover {
 
     .text-chunk{
         margin-inline-start: calc(2*var(--spacing));
+    }
+
+    .non-timeline-text-chunk{
+        margin-inline: calc(2*var(--spacing));
     }
 
     h1 {
@@ -258,10 +313,12 @@ a:hover {
     }
 
     blockquote p {
-        max-inline-size: 75ch;
+        max-inline-size: 60ch;
         margin-inline: auto;
         padding-inline: initial;
         padding-block: calc(0.5*var(--spacing));
+        font-size: calc(1.5*var(--spacing));
+        line-height: calc(2.4*var(--spacing));
     }
 
     .timeline {
