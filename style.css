@@ -20,7 +20,7 @@ footer{
 }
 
 section{
-    margin-block: var(--spacing);
+    margin-block-start: var(--spacing);
 }
 
 /* ------------ type ------------- */
@@ -48,7 +48,7 @@ h2 {
 }
 
 h3{
-    font-size: calc(1.8*var(--spacing));
+    font-size: calc(1.5*var(--spacing));
     background-color:var(--blue);
     color:black;
     margin-inline: calc(1.2*var(--spacing));
@@ -83,8 +83,8 @@ header ol{
 }
 
 section p:first-of-type::first-letter,
-section:nth-of-type(1) p:nth-of-type(3)::first-letter, 
-section:nth-of-type(2) p:nth-of-type(2)::first-letter, 
+section:nth-of-type(1) p:nth-of-type(1)::first-letter, 
+section:nth-of-type(2) p:nth-of-type(1)::first-letter, 
 section:nth-of-type(3) p:nth-of-type(2)::first-letter {
   font-size: calc(1.8 * var(--spacing));
   font-family: var(--heading-font);
@@ -109,38 +109,33 @@ section:nth-of-type(3) p:nth-of-type(2)::first-letter {
 /* ------------ blockquote ------------- */
 blockquote {
     background-color: var(--blue);
-    margin: 0;
-    padding-block: calc(2*var(--spacing));
-    padding-inline: 0;
+    padding-block: calc(1.5*var(--spacing));
 }
 
 blockquote p {
-    max-width: none;
-    padding-inline: calc(3*var(--spacing));
-    font-size: calc(1.4*var(--spacing));
+    max-inline-size: 60ch;
+    padding-inline: calc(2*var(--spacing));
+    font-size: calc(1.2*var(--spacing));
     font-family: var(--heading-font);
     font-weight: 500;
     line-height: calc(2*var(--spacing));
 }
 
-
-blockquote p::before { content: '“'; margin-inline-start: -0.6em;
+blockquote p::before { 
+    content: '“'; 
+    margin-inline-start: -0.4em;
 }
 
-blockquote p::
-blockquote p::before {
-	content: '“'; 
-	margin-inline-start: -0.6em; 
+blockquote p::after { 
+    content: '”'; 
 }
 
-blockquote p::after { content: '”'; }
-
-blockquote p::before,
+/* blockquote p::before,
 blockquote p::after {
 	color: var(--black);
-	font-family: var(--heading-font); /* You have much more control this way! */
+	font-family: var(--heading-font); 
     font-size: 1.3rem;
-} */
+}  */
 
 /* a{
     color: #44a4ff;
@@ -186,7 +181,7 @@ a:hover {
 
 .text-chunk {
     padding-block-start: calc(0.5*var(--spacing));
-    padding-block-end: calc(3*var(--spacing));
+    padding-block-end: calc(6*var(--spacing));
 }
 
 /* section:first-child{
@@ -234,7 +229,7 @@ a:hover {
         flex-grow: 1;
     }    
     
-    header, footer{
+    header, footer {
         padding: calc(3*var(--spacing));
     }
 
@@ -259,7 +254,7 @@ a:hover {
     }
 
     blockquote {
-        padding-inline: calc(2 * var(--spacing));
+        padding-inline: calc(3 * var(--spacing));
     }
 
     blockquote p {
@@ -267,6 +262,10 @@ a:hover {
         margin-inline: auto;
         padding-inline: initial;
         padding-block: calc(0.5*var(--spacing));
+    }
+
+    .timeline {
+        margin-inline: calc(2*var(--spacing)); /*change the calc value to move the blue line */
     }
 }
 
