@@ -82,17 +82,7 @@ header ol{
     gap: calc(0.5*var(--spacing));
 }
 
-header ol{
-    display:flex;
-    flex-direction:column;
-    align-items:start;
-    gap: calc(0.5*var(--spacing));
-}
-
-section p:first-of-type::first-letter,
-section:nth-of-type(1) p:nth-of-type(1)::first-letter, 
-section:nth-of-type(2) p:nth-of-type(1)::first-letter, 
-section:nth-of-type(3) p:nth-of-type(2)::first-letter {
+h3 + p::first-letter {
   font-size: calc(1.8 * var(--spacing));
   font-family: var(--heading-font);
   font-weight: 600;
@@ -140,47 +130,19 @@ blockquote p::after {
     content: '”'; 
 }
 
-/* blockquote p::before,
-blockquote p::after {
-	color: var(--black);
-	font-family: var(--heading-font); 
-    font-size: 1.3rem;
-}  */
-
-/* a{
-    color: #44a4ff;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--black);
-    text-decoration-thickness: 15%;
-    text-underline-offset: 10%;
-    &:hover {
-    color: var(--black);
-    background: var(--blue);
-    }
-} */
-
 a {
   color: black;
   text-decoration: underline;
   text-decoration-style: solid;
-  text-decoration-color: black; /* or var(--black) if you've defined it */
+  text-decoration-color: black;
   text-decoration-thickness: 10%;
   text-underline-offset: 15%;
 }
 
 a:hover {
   color: black;
-  /* font-weight: 500; */
   background: var(--blue);
   text-decoration-color: black;
-}
-
-.conclusion{
-    background-color: var(--blue);
-    padding-block-start: var(--spacing);
-    padding-block-end: calc(2*var(--spacing));
-    margin-block-end:initial;
 }
 
 .timeline {
@@ -193,7 +155,6 @@ a:hover {
 .text-chunk {
     padding-block-start: var(--spacing);
     padding-block-end: calc(6*var(--spacing));
-    /* padding-inline-start: var(--spacing); */
 }
 
 .non-timeline-text-chunk {
@@ -201,11 +162,6 @@ a:hover {
     padding-block-end: calc(6*var(--spacing));
     padding-inline: var(--spacing);
 }
-
-/* section:first-child{
-    padding-block: var(--spacing);
-} */
-
 
 .timeline::before,
 .timeline::after {
@@ -251,13 +207,6 @@ a:hover {
         font-size: calc(4 * var(--spacing));
         line-height: calc(4.5 * var(--spacing));
     }
-
-    header,
-    footer{
-    padding: calc(var(--spacing));
-    background-color:var(--grey);
-    color: white;
-}
 }
 
 @media(width>1000px) {
