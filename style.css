@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root{
-    --spacing: 1.5rem;
+    --spacing: 1rem;
     --heading-font: "Playfair Display", serif;
     --body-font: "Inter", sans-serif;
 
     --grey:#5B5B5B;
     --light-grey: #D2D2D2;
-    --blue:#98cdff;
+    --blue: #98cdff;
     --highlight: #DEFFAC;
 }
 
@@ -37,8 +37,8 @@ h1{
 }
 
 h2{
-    font-size: 3rem;
-    line-height: 2.8rem;
+    font-size: calc(2*var(--spacing));
+    line-height: calc(2*var(--spacing));
     color:black;
     background-color:var(--light-grey);
     padding-inline: calc(2*var(--spacing));
@@ -50,7 +50,7 @@ h2{
 }
 
 h3{
-    font-size: 1.6rem;
+    font-size: var(--spacing);
     background-color:var(--blue);
     color:black;
     margin-inline-start: var(--spacing);
@@ -58,7 +58,7 @@ h3{
     padding-block: calc(0.2*var(--spacing));
     padding-inline: calc(0.6*var(--spacing));
     inline-size: fit-content;
-    line-height: 2rem;
+    line-height: calc(1.5*var(--spacing));
 }
 
 p{
@@ -84,7 +84,7 @@ header ol{
 
 section > p:first-of-type:first-letter,
 section:nth-of-type(3) p:nth-of-type(2)::first-letter {
-    font-size: 2rem;
+    font-size: calc(1.5*var(--spacing));
     font-family: var(--heading-font);
     font-weight: 600;
 }
@@ -104,6 +104,7 @@ section:nth-of-type(3) p:nth-of-type(2)::first-letter {
     font-style:italic;
 }
 
+/* ------------ blockquote ------------- */
 blockquote {
     background-color: var(--blue);
     margin: 0;
@@ -114,12 +115,16 @@ blockquote {
 blockquote p {
     max-width: none;
     padding-inline: calc(2*var(--spacing));
-    font-size: 1.3rem;
+    font-size: var(--spacing);
     font-family: var(--heading-font);
     line-height: calc(1.4*var(--spacing));
 }
 
-blockquote p::before {
+
+blockquote p::before { content: '“'; margin-inline-start: -0.6em;
+}
+blockquote p::
+/* blockquote p::before {
 	content: '“'; /* Add the quotes themselves via pseudo-elements. */
 	margin-inline-start: -0.6em; /* Manually adjust this. */
 }
@@ -130,7 +135,7 @@ blockquote p::after {
 	color: var(--black);
 	font-family: var(--heading-font); /* You have much more control this way! */
     font-size: 1.3rem;
-}
+} */
 
 /* a{
     color: #44a4ff;
