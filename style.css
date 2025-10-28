@@ -5,7 +5,7 @@
     --heading-font: "Playfair Display", serif;
     --body-font: "Inter", sans-serif;
 
-    --grey:#5B5B5B;
+    --grey:#1B263F;
     --light-grey: #D2D2D2;
     --blue: #98cdff;
     --highlight: #DEFFAC;
@@ -14,7 +14,7 @@
 /* ------------ layout ------------- */
 header,
 footer{
-    padding: calc(var(--spacing));
+    padding: var(--spacing);
     background-color:var(--grey);
     color: white;
 }
@@ -30,32 +30,32 @@ h1, h2, h3{
 }
 
 h1{
-    font-size: calc(3*var(--spacing));
-    line-height: calc(3.5*var(--spacing));
+    font-size: calc(4*var(--spacing));
+    line-height: calc(4.5*var(--spacing));
     color: white;
-    padding-block-end: var(--spacing);       
+    padding-block-end: calc(2*var(--spacing));       
 }
 
 h2 {
-    font-size: calc(2.8 * var(--spacing));
-    line-height: calc(3 * var(--spacing));
-    color: black;
-    background-color: var(--light-grey);
+    font-size: calc(3.8 * var(--spacing));
+    line-height: calc(3.8 * var(--spacing));
+    color: white;
+    background-color: var(--grey);
     padding-inline: var(--spacing);
     padding-block-start: calc(0.3 * var(--spacing));
-    padding-block-end: calc(1 * var(--spacing));
+    padding-block-end: calc(1.4*var(--spacing));
     margin-block-start: calc(-1 * var(--spacing));
 }
 
 h3{
-    font-size: calc(1.5*var(--spacing));
+    font-size: calc(1.8*var(--spacing));
     background-color:var(--blue);
     color:black;
-    margin-inline: var(--spacing);
     margin-block-start: calc(4*var(--spacing));
     margin-block-end: calc(1*var(--spacing));
+    margin-inline: var(--spacing);
     padding-block: calc(0.5*var(--spacing));
-    padding-inline-start: calc(0.5*var(--spacing));
+    padding-inline: calc(0.5*var(--spacing));
     inline-size: fit-content;
     line-height: calc(2.4*var(--spacing));
 }
@@ -66,7 +66,14 @@ p{
     font-family: var(--body-font);
     font-size: calc(1.1*var(--spacing));
     line-height: calc(2*var(--spacing));
-    max-inline-size: 60ch;
+}
+
+.non-timeline-text-chunk p {
+    padding-inline: initial;
+}
+
+.non-timeline-text-chunk h3{
+    margin-inline: initial;
 }
 
 header p {
@@ -86,6 +93,7 @@ h3 + p::first-letter {
   font-size: calc(1.8 * var(--spacing));
   font-family: var(--heading-font);
   font-weight: 600;
+  color: var(--grey);
 }
 
 .h1-em {
@@ -169,8 +177,8 @@ a:hover {
   position: absolute;
   left: 0;
   transform: translateX(-60%);
-  width: calc(0.7*var(--spacing));
-  height: calc(0.7*var(--spacing));
+  width: var(--spacing);
+  height: var(--spacing);
   border-radius: 50%;
   background: var(--blue);
 
@@ -188,7 +196,7 @@ a:hover {
     background: var(--highlight);
 }
 
-@media(width>800px) {
+@media(width>750px) {
     blockquote {
         padding-inline: calc(3 * var(--spacing));
     }
@@ -207,6 +215,35 @@ a:hover {
         font-size: calc(4 * var(--spacing));
         line-height: calc(4.5 * var(--spacing));
     }
+
+    .timeline {
+        margin-inline: calc(3*var(--spacing)); /*change the calc value to move the blue line */
+    }
+
+    p{
+        inline-size: 80%;
+    }
+
+    header p {
+        margin: initial;
+        padding-inline-end: var(--spacing);
+        padding-block: var(--spacing);
+        align-content: flex-start;
+        inline-size: initial;
+    }
+
+    header ol{
+        display:flex;
+        grid-template-rows: auto auto 1fr; 
+        align-items: start;
+        gap: calc(2 * var(--spacing));
+  }
+        /* trying to figure out some stuff here...
+        
+        flex-direction:row;
+        align-items:start;
+        gap: calc(0.5*var(--spacing));
+    } */
 }
 
 @media(width>1000px) {
@@ -238,13 +275,14 @@ a:hover {
     }
 
     .non-timeline-text-chunk{
-        margin-inline: calc(2*var(--spacing));
+        margin-inline: var(--spacing);
     }
 
     h1 {
         max-inline-size: 25ch;
         font-size: calc(4 * var(--spacing));
         line-height: calc(4.5 * var(--spacing));
+        padding-block-end: calc(5*var(--spacing)); 
     }
 
     h2{
@@ -252,7 +290,7 @@ a:hover {
     }
 
     p {
-        font-size: 120%;
+        font-size: 110%;
         line-height: calc(2.2*var(--spacing));
         padding-block: var(--spacing);
     }
@@ -275,7 +313,11 @@ a:hover {
     }
 }
 
-
+@media (width>1200){
+    p {
+        inline-size: 60%;
+    }
+}
 
 /* @media(width>550px) {
     :root{
