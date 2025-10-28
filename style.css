@@ -5,9 +5,8 @@
     --heading-font: "Playfair Display", serif;
     --body-font: "Inter", sans-serif;
 
-    --grey:#1B263F;
-    --light-grey: #D2D2D2;
     --blue: #98cdff;
+    --dark-blue:#1B263F;
     --highlight: #DEFFAC;
 }
 
@@ -15,7 +14,7 @@
 header,
 footer{
     padding: var(--spacing);
-    background-color:var(--grey);
+    background-color:var(--dark-blue);
     color: white;
 }
 
@@ -37,10 +36,10 @@ h1{
 }
 
 h2 {
-    font-size: calc(3.8 * var(--spacing));
+    font-size: calc(3.6 * var(--spacing));
     line-height: calc(3.8 * var(--spacing));
     color: white;
-    background-color: var(--grey);
+    background-color: var(--dark-blue);
     padding-inline: var(--spacing);
     padding-block-start: calc(0.3 * var(--spacing));
     padding-block-end: calc(1.4*var(--spacing));
@@ -95,7 +94,7 @@ h3 + p::first-letter {
   font-size: calc(1.8 * var(--spacing));
   font-family: var(--heading-font);
   font-weight: 600;
-  color: var(--grey);
+  color: var(--dark-blue);
 }
 
 .h1-em {
@@ -116,8 +115,23 @@ h3 + p::first-letter {
 footer p{
     font-family: var(--body-font);
     padding-inline: 0;
+    padding-block: calc(0.3*var(--spacing));
 }
 
+footer li:nth-child(1){
+    color:var(--blue);
+}
+
+footer a {
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: black;
+    text-decoration: underline;
+}
 /* ------------ blockquote ------------- */
 blockquote {
     background-color: var(--blue);
@@ -164,14 +178,13 @@ a:hover {
     padding-inline-start: calc(0.1*var(--spacing));
 }
 
-.text-chunk {
+.text-chunk,
+.non-timeline-text-chunk {
     padding-block-start: var(--spacing);
-    padding-block-end: calc(6*var(--spacing));
+    padding-block-end: calc(5*var(--spacing));
 }
 
 .non-timeline-text-chunk {
-    padding-block-start: var(--spacing);
-    padding-block-end: calc(6*var(--spacing));
     padding-inline: var(--spacing);
 }
 
@@ -258,6 +271,16 @@ a:hover {
         grid-template-rows: auto auto 1fr; 
         align-items: start;
   }
+
+    /* footer ol:nth-child(2) li { flex-grow: 1; } */
+    footer li p{ 
+        inline-size: 100%;
+        text-wrap: nowrap;}
+    /* footer ol{
+        inline-size: 100%;
+        grid-template-columns: 1fr 1fr;
+    } */
+
         /* trying to figure out some stuff here...
         
         flex-direction:row;
@@ -284,6 +307,7 @@ a:hover {
     footer ol{
         display:flex;
         justify-content: space-between;
+        /* grid-template-columns: 1fr 1fr; */
     }
 
     /* 
@@ -312,6 +336,10 @@ a:hover {
         padding-block: var(--spacing);
         max-inline-size: 70%;
     }
+
+    /* footer p{
+        max-inline-size: 100%;
+    } */
 
     blockquote {
         padding-inline: calc(3 * var(--spacing));
@@ -363,11 +391,37 @@ a:hover {
     }
 } */
 
-/* for print
 @media print{
-    : root{
-        --color-bg: white;
-        --color-fg: black;
+    :root{
+
+    }
+
+    header p, h1, h2{
+        color: black;
+    }
+
+    h2{
+        border: medium solid var(--dark-blue);  
+    }
+
+    h3{
+        padding-inline: 0;
+        margin-block-start: calc(2*var(--spacing));
+        margin-block-end: 0;
+    }
+
+    blockquote{
+        padding-inline-start: 20%;
+        padding-block: calc(2*var(--spacing));
+    }
+
+    .text-chunk{
+        padding-block-end: calc(3*var(--spacing));
+    }
+
+    header ol{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        inline-size: 100%;
     }
 }
-    */ 
