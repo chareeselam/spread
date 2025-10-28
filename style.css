@@ -199,10 +199,14 @@ a:hover {
 }
 
 @media(width>750px) {
-    header, footer, .non-timeline-text-chunk, blockquote, h2 {
-    padding-inline: calc(3*var(--spacing));
+    header, footer {
+        padding: calc(3*var(--spacing));
     }
 
+    .non-timeline-text-chunk, blockquote, h2 {
+    padding-inline: calc(3*var(--spacing));
+    }
+    
     .text-chunk {
         padding-inline: calc(2*var(--spacing));
     }
@@ -255,7 +259,7 @@ a:hover {
 
 @media(width>1200px) {
     :root{
-        font-size: 120%;
+        font-size: 110%;
     }
     
     header ol {
@@ -272,17 +276,17 @@ a:hover {
         display:flex;
         justify-content: space-between;
     }
-    
+
     header, footer {
-        padding: calc(3*var(--spacing));
+        padding: calc(4*var(--spacing));
     }
 
-    .text-chunk{
-        margin-inline-start: calc(2*var(--spacing));
+    .non-timeline-text-chunk, blockquote, h2 {
+    padding-inline: calc(4*var(--spacing));
     }
 
-    .non-timeline-text-chunk{
-        margin-inline: var(--spacing);
+    .text-chunk {
+        padding-inline: calc(3*var(--spacing));
     }
 
     h1 {
@@ -290,10 +294,6 @@ a:hover {
         font-size: calc(4 * var(--spacing));
         line-height: calc(4.5 * var(--spacing));
         padding-block-end: calc(5*var(--spacing)); 
-    }
-
-    h2{
-        padding-inline: calc(2.2*var(--spacing));
     }
 
     p {
@@ -317,7 +317,7 @@ a:hover {
     }
 
     .timeline {
-        margin-inline: calc(2*var(--spacing)); /*change the calc value to move the blue line */
+        margin-inline: calc(4*var(--spacing)); /*change the calc value to move the blue line */
     }
 }
 
