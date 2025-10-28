@@ -113,7 +113,9 @@ h3 + p::first-letter {
 
 footer p{
     font-family: var(--body-font);
+    padding-inline: 0;
 }
+
 /* ------------ blockquote ------------- */
 blockquote {
     background-color: var(--blue);
@@ -197,8 +199,12 @@ a:hover {
 }
 
 @media(width>750px) {
-    blockquote {
-        padding-inline: calc(3 * var(--spacing));
+    header, footer, .non-timeline-text-chunk, blockquote, h2 {
+    padding-inline: calc(3*var(--spacing));
+    }
+
+    .text-chunk {
+        padding-inline: calc(2*var(--spacing));
     }
 
     blockquote p {
@@ -222,6 +228,7 @@ a:hover {
 
     p{
         inline-size: 80%;
+        max-inline-size: 65ch;
     }
 
     header p {
@@ -246,7 +253,7 @@ a:hover {
     } */
 }
 
-@media(width>1000px) {
+@media(width>1200px) {
     :root{
         font-size: 120%;
     }
@@ -293,6 +300,7 @@ a:hover {
         font-size: 110%;
         line-height: calc(2.2*var(--spacing));
         padding-block: var(--spacing);
+        max-inline-size: 60ch;
     }
 
     blockquote {
@@ -313,11 +321,11 @@ a:hover {
     }
 }
 
-@media (width>1200){
+/* @media (width>1200){
     p {
         inline-size: 60%;
     }
-}
+} */
 
 /* @media(width>550px) {
     :root{
