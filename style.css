@@ -400,14 +400,24 @@ a:hover {
         color: black;
     }
 
+    h1{
+        font-size: calc(3*var(--spacing));
+        line-height: calc(3.5*var(--spacing));
+    }
+
     h2{
-        border: medium solid var(--dark-blue);  
+        border: calc(0.15*var(--spacing)) solid var(--dark-blue);
+        font-size: calc(3*var(--spacing)); 
+        padding-block-start: calc(0.3*var(--spacing));
+        padding-block-end: var(--spacing);
     }
 
     h3{
         padding-inline: 0;
         margin-block-start: calc(2*var(--spacing));
         margin-block-end: 0;
+        inline-size: fit-content;
+        display: inline-block;
     }
 
     blockquote{
@@ -419,9 +429,15 @@ a:hover {
         padding-block-end: calc(3*var(--spacing));
     }
 
-    header ol{
+    header ol {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        inline-size: 100%;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "author date"
+            "note note";
+        
+        li:nth-child(1) { grid-area: author; }
+        li:nth-child(2) { grid-area: date; }
+        li:nth-child(3) { grid-area: note; }
     }
 }
