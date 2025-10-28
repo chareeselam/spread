@@ -257,7 +257,7 @@ a:hover {
     } */
 }
 
-@media(width>1200px) {
+@media(width>1100px) {
     :root{
         font-size: 110%;
     }
@@ -297,10 +297,10 @@ a:hover {
     }
 
     p {
-        font-size: 110%;
+        /* font-size: 110%; */
         line-height: calc(2.2*var(--spacing));
         padding-block: var(--spacing);
-        max-inline-size: 60ch;
+        max-inline-size: 70%;
     }
 
     blockquote {
@@ -318,6 +318,17 @@ a:hover {
 
     .timeline {
         margin-inline: calc(4*var(--spacing)); /*change the calc value to move the blue line */
+    }
+}
+
+/* ----- for monitor bigger than 16 inch laptop ----- */
+@media (width>1728px) {
+    header, footer, .non-timeline-text-chunk, h2 {
+        padding-inline: 20%;
+    }
+
+    .timeline {
+        margin-inline: 20%; /*change the calc value to move the blue line */
     }
 }
 
