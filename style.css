@@ -209,9 +209,28 @@ a:hover {
   bottom: calc(-0.37*var(--spacing));
 }
 
+/* Learnt highlight animation from Cason */
 .highlight{
-    background: var(--highlight);
+    display: inline;
+    background-image: linear-gradient(to right, var(--highlight), var(--highlight));
+    background-repeat: no-repeat;
+    color: black;
+    padding-block: 3px;
+    animation: highlightAnim 0.8s ease forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 100%;
+    transition: all 0.3s ease;
 }
+
+@keyframes highlightAnim {
+    from {
+        background-size: 0%;
+    }
+    to {
+        background-size: 100%;
+    }
+}
+
 
 @media(width>750px) {
     header, footer {
