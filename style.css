@@ -36,10 +36,10 @@ h1{
 }
 
 h2 {
-    font-size: calc(3.6 * var(--spacing));
+    font-size: calc(3.4 * var(--spacing));
     line-height: calc(3.8 * var(--spacing));
-    color: white;
-    background-color: var(--dark-blue);
+    color: var(--dark-blue);
+    background-color: rgba(236, 236, 236, 0.69);
     padding-inline: var(--spacing);
     padding-block-start: calc(0.3 * var(--spacing));
     padding-block-end: calc(1.4*var(--spacing));
@@ -47,6 +47,7 @@ h2 {
     position: sticky;
     top: 0;
     z-index: 1;
+    backdrop-filter: blur(6px);
 }
 
 h3{
@@ -79,9 +80,9 @@ p{
 }
 
 header p {
-  margin: initial;
-  padding-inline: initial;
-  padding-block: var(--spacing);
+    margin: initial;
+    padding-inline: initial;
+    padding-block: var(--spacing);
 }
 
 header ol{
@@ -91,10 +92,10 @@ header ol{
 }
 
 h3 + p::first-letter {
-  font-size: calc(1.8 * var(--spacing));
-  font-family: var(--heading-font);
-  font-weight: 600;
-  color: var(--dark-blue);
+    font-size: calc(1.8 * var(--spacing));
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: var(--dark-blue);
 }
 
 .h1-em {
@@ -157,18 +158,18 @@ blockquote p::after {
 }
 
 a {
-  color: black;
-  text-decoration: underline;
-  text-decoration-style: solid;
-  text-decoration-color: black;
-  text-decoration-thickness: 10%;
-  text-underline-offset: 15%;
+    color: black;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: black;
+    text-decoration-thickness: 10%;
+    text-underline-offset: 15%;
 }
 
 a:hover {
-  color: black;
-  background: var(--blue);
-  text-decoration-color: black;
+    color: black;
+    background: var(--blue);
+    text-decoration-color: black;
 }
 
 .timeline {
@@ -190,45 +191,38 @@ a:hover {
 
 .timeline::before,
 .timeline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  transform: translateX(-60%);
-  width: var(--spacing);
-  height: var(--spacing);
-  border-radius: 50%;
-  background: var(--blue);
-
+    content: "";
+    position: absolute;
+    left: 0;
+    transform: translateX(-60%);
+    width: var(--spacing);
+    height: var(--spacing);
+    border-radius: 50%;
+    background: var(--blue);
 }
 
 .timeline::before {
-  top: calc(-0.37*var(--spacing));
+    top: calc(-0.37*var(--spacing));
 }
 
 .timeline::after {
-  bottom: calc(-0.37*var(--spacing));
+    bottom: calc(-0.37*var(--spacing));
 }
 
 /* Learnt highlight animation from Cason */
-.highlight{
-    display: inline;
+.highlight {
     background-image: linear-gradient(to right, var(--highlight), var(--highlight));
     background-repeat: no-repeat;
-    color: black;
-    padding-block: 3px;
-    animation: highlightAnim 0.8s ease forwards;
-    animation-timeline: view();
+    animation-name: highlight;
+    animation-timeline: view(block);
+    animation-timing-function: linear;
+    animation-fill-mode: both;
     animation-range: entry 0% cover 100%;
-    transition: all 0.3s ease;
 }
 
-@keyframes highlightAnim {
-    from {
-        background-size: 0%;
-    }
-    to {
-        background-size: 100%;
-    }
+@keyframes highlight {
+    from { background-size: 0% 100%; }   
+    to   { background-size: 100% 100%; }
 }
 
 
@@ -411,12 +405,13 @@ a:hover {
 } */
 
 @media print{
-    :root{
-
-    }
 
     header p, h1, h2{
         color: black;
+    }
+
+    header p, h1{
+        padding-block-end: initial;
     }
 
     h1{
@@ -428,7 +423,6 @@ a:hover {
         border: calc(0.15*var(--spacing)) solid var(--dark-blue);
         font-size: calc(3*var(--spacing)); 
         padding-block-start: calc(0.3*var(--spacing));
-        padding-block-end: var(--spacing);
     }
 
     h3{
@@ -448,15 +442,20 @@ a:hover {
         padding-block-end: calc(3*var(--spacing));
     }
 
+    header{
+        padding-block-end: 0rem;
+        }
+    
     header ol {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 12rem 12rem 1fr;
         grid-template-areas:
-            "author date"
-            "note note";
-        
-        li:nth-child(1) { grid-area: author; }
-        li:nth-child(2) { grid-area: date; }
-        li:nth-child(3) { grid-area: note; }
+        "author date date"
+        "note   note  note";
     }
+
+    header ol li:nth-child(1) { grid-area: author; }
+    header ol li:nth-child(2) { grid-area: date; }
+    header ol li:nth-child(3) { grid-area: note; }
+
 }
