@@ -414,6 +414,9 @@ a:hover {
         color: black;
     }
 
+    header{
+        background-color: white;
+    }
     header p, h1{
         padding-block-end: initial;
     }
@@ -441,11 +444,13 @@ a:hover {
         inline-size: fit-content;
         display: inline-block;
         font-size: calc(1.75*var(--spacing));
+        background-color: white;
     }
 
     blockquote{
         padding-inline-start: 10%;
         padding-block-start: 0;
+        background-color: white;
     }
 
     blockquote p:first-child{
@@ -462,6 +467,7 @@ a:hover {
 
     .highlight{
         font-style: italic;
+        background-color: var(--highlight);
     }
 
     .text-chunk,
@@ -475,6 +481,10 @@ a:hover {
     
     .text-chunk {
         padding-inline: calc(2*var(--spacing));
+    }
+
+    .timeline {
+        z-index: 30;
     }
 
     header ol {
