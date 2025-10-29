@@ -63,6 +63,10 @@ h3{
     line-height: calc(2.4*var(--spacing));
 }
 
+header > p {
+    font-style: italic;
+}
+
 p{
     padding-block: calc(1*var(--spacing));
     padding-inline: var(--spacing);
@@ -419,27 +423,45 @@ a:hover {
         line-height: calc(3.5*var(--spacing));
     }
 
+    .h1-em {
+        color:var(--blue);
+    }
+
     h2{
-        border: calc(0.15*var(--spacing)) solid var(--dark-blue);
-        font-size: calc(3*var(--spacing)); 
-        padding-block-start: calc(0.3*var(--spacing));
+        border: calc(0.1*var(--spacing)) solid var(--dark-blue);
+        font-size: calc(2.5*var(--spacing)); 
+        padding-block-start: calc(0.1*var(--spacing));
+        padding-block-end: calc(0.5*var(--spacing));
     }
 
     h3{
         padding-inline: 0;
-        margin-block-start: calc(2*var(--spacing));
+        margin-block-start: calc(1.75*var(--spacing));
         margin-block-end: 0;
         inline-size: fit-content;
         display: inline-block;
+        font-size: calc(1.75*var(--spacing));
     }
 
     blockquote{
         padding-inline-start: 10%;
-        padding-block: 0;
+        padding-block-start: 0;
     }
 
-    blockquote p{
-        margin-block-end: calc(24*var(--spacing));
+    blockquote p:first-child{
+        margin-block-end: calc(6*var(--spacing));
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+    p {
+        padding-block: var(--spacing);
+    }
+
+    .highlight{
+        font-style: italic;
     }
 
     .text-chunk,
@@ -451,6 +473,10 @@ a:hover {
         padding-block-end: 0rem;
         }
     
+    .text-chunk {
+        padding-inline: calc(2*var(--spacing));
+    }
+
     header ol {
         display: grid;
         grid-template-columns: 12rem 12rem 1fr;
@@ -462,4 +488,8 @@ a:hover {
     header ol li:nth-child(1) { grid-area: author; }
     header ol li:nth-child(2) { grid-area: date; }
     header ol li:nth-child(3) { grid-area: note; }
+
+    footer{
+        display: none;
+    }
 }
