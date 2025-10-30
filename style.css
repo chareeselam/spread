@@ -40,14 +40,14 @@ h1{
 }
 
 h2 {
-    font-size: calc(3.4 * var(--spacing));
-    line-height: calc(3.8 * var(--spacing));
+    font-size: calc(3.5 * var(--spacing));
+    line-height: calc(3 * var(--spacing));
     color: var(--dark-blue);
     /* This background color makes it have a "glass" effect */
     background-color: rgba(236, 236, 236, 0.69);
     padding-inline: var(--spacing);
-    padding-block-start: calc(0.3 * var(--spacing));
-    padding-block-end: calc(1.4*var(--spacing));
+    padding-block-start: calc(0.7 * var(--spacing));
+    padding-block-end: calc(1.5*var(--spacing));
     margin-block-start: calc(-1 * var(--spacing));
     position: sticky;
     top: 0;
@@ -223,9 +223,9 @@ a:hover {
 
 
 /* ------------ scroll highlight ------------- */
+
 /* We wanted to animate highlighting key text in our article as a user scrolls */
 /* We know our classmate Cason had done something similar in his previous project so we sought out some guidance. */
-
 .highlight {
     /* Highlights our text from left to right, consistent color with var(--highlight) */
     background-image: linear-gradient(to right, var(--highlight), var(--highlight));
@@ -312,6 +312,8 @@ a:hover {
         line-height: calc(5.2 * var(--spacing));
         padding-block-end: calc(4*var(--spacing)); 
     }
+
+    h2{ font-size: calc(4*var(--spacing));}
 
     p {
         line-height: calc(2.2*var(--spacing));
