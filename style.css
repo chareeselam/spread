@@ -213,7 +213,9 @@ a:hover {
     bottom: calc(-0.37*var(--spacing));
 }
 
-/* Learnt highlight animation from Cason */
+/* We wanted to animate highlighting key text in our article as a user scrolls */
+/* We know our classmate Cason had done something similar in his previous project so we sought out some guidance. */
+
 .highlight {
     background-image: linear-gradient(to right, var(--highlight), var(--highlight));
     background-repeat: no-repeat;
