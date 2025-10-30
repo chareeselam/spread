@@ -8,15 +8,19 @@
     --blue: #98cdff;
     --dark-blue:#1B263F;
     --highlight: #DEFFAC;
+    --white:#FFFFFF;
 }
 
+html{scroll-behavior: smooth;}
+
 /* ------------ layout ------------- */
-header,
-footer{
+header,footer{
     padding: var(--spacing);
     background-color:var(--dark-blue);
-    color: white;
+    color: var(--white);
 }
+
+footer{margin-block-start: 8%;}
 
 section{
     margin-block-start: var(--spacing);
@@ -31,7 +35,7 @@ h1, h2, h3{
 h1{
     font-size: calc(4*var(--spacing));
     line-height: calc(4.5*var(--spacing));
-    color: white;
+    color: var(--white);
     padding-block-end: calc(2*var(--spacing));     
 }
 
@@ -39,6 +43,7 @@ h2 {
     font-size: calc(3.4 * var(--spacing));
     line-height: calc(3.8 * var(--spacing));
     color: var(--dark-blue);
+    /* This background color makes it have a "glass" effect */
     background-color: rgba(236, 236, 236, 0.69);
     padding-inline: var(--spacing);
     padding-block-start: calc(0.3 * var(--spacing));
@@ -48,12 +53,13 @@ h2 {
     top: 0;
     z-index: 1;
     backdrop-filter: blur(6px);
+    border-bottom: solid var(--white) 0.05em;
 }
 
 h3{
     font-size: calc(1.8*var(--spacing));
     background-color:var(--blue);
-    color:black;
+    color:var(--dark-blue);
     margin-block-start: calc(4*var(--spacing));
     margin-block-end: calc(1*var(--spacing));
     margin-inline: var(--spacing);
@@ -63,25 +69,18 @@ h3{
     line-height: calc(2.4*var(--spacing));
 }
 
-header > p {
-    font-style: italic;
-}
+header > p { font-style: italic; }
 
 p{
-    padding-block: calc(1*var(--spacing));
+    padding-block: var(--spacing);
     padding-inline: var(--spacing);
     font-family: var(--body-font);
     font-size: calc(1.1*var(--spacing));
     line-height: calc(2*var(--spacing));
 }
 
-.non-timeline-text-chunk p {
-    padding-inline: initial;
-}
-
-.non-timeline-text-chunk h3{
-    margin-inline: initial;
-}
+.non-timeline-text-chunk p { padding-inline: initial; }
+.non-timeline-text-chunk h3{ margin-inline:  initial; }
 
 header p {
     margin: initial;
@@ -92,7 +91,7 @@ header p {
 header ol{
     display:flex;
     flex-direction:column;
-    align-items:start;
+    align-items:flex-start;
 }
 
 h3 + p::first-letter {
@@ -117,9 +116,11 @@ h3 + p::first-letter {
     font-style:italic;
 }
 
+/* ------------ footer ------------- */
+
 footer p{
     font-family: var(--body-font);
-    padding-inline: 0;
+    padding-inline: initial;
     padding-block: calc(0.3*var(--spacing));
 }
 
@@ -130,14 +131,16 @@ footer li:nth-child(1){
 footer a {
     color: var(--blue);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease-in-out;
 }
 
 footer a:hover {
-    color: black;
+    color: var(--dark-blue);
     text-decoration: underline;
 }
+
 /* ------------ blockquote ------------- */
+
 blockquote {
     background-color: var(--blue);
     padding-block: calc(1.5*var(--spacing));
@@ -161,13 +164,16 @@ blockquote p::after {
     content: '”'; 
 }
 
+/* ------------ links ------------- */
+
 a {
     color: black;
     text-decoration: underline;
     text-decoration-style: solid;
     text-decoration-color: black;
-    text-decoration-thickness: 10%;
-    text-underline-offset: 15%;
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.15em;
+    transition: color 0.3s ease-in-out;
 }
 
 a:hover {
@@ -175,6 +181,8 @@ a:hover {
     background: var(--blue);
     text-decoration-color: black;
 }
+
+/* ------------ timeline ------------- */
 
 .timeline {
     position: relative;
@@ -213,64 +221,53 @@ a:hover {
     bottom: calc(-0.37*var(--spacing));
 }
 
+
+/* ------------ scroll highlight ------------- */
 /* We wanted to animate highlighting key text in our article as a user scrolls */
 /* We know our classmate Cason had done something similar in his previous project so we sought out some guidance. */
 
 .highlight {
+    /* Highlights our text from left to right, consistent color with var(--highlight) */
     background-image: linear-gradient(to right, var(--highlight), var(--highlight));
+    /* Makes the highlight animation move. Also makes it highlight backwards on reverse scroll */
     background-repeat: no-repeat;
-    animation-name: highlight;
-    animation-timeline: view(block);
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-range: entry 0% cover 100%;
+    /* Fallback in case it's not supported on certain browsers */
+    background-size: 100% 100%;
+    background-position: 0 0;
 }
 
+@supports (animation-timeline:view(block)){
+    .highlight{
+        background-size: 0% 100%;
+        animation-name: highlight;
+        /* Animation starts after the user has entered 30% of the viewport. Lots of trial and error testing here -> had to experiment between scroll() and view()*/
+        animation-timeline: view(30% 20%);
+        /* Sets the animation axis */
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-range: entry 0% cover 100%;
+    }
+}
+
+    /* Highlights from beginning to end of text from 0->100% of our <span> */
 @keyframes highlight {
     from { background-size: 0% 100%; }   
     to   { background-size: 100% 100%; }
 }
 
-
+/* ------------ media ------------- */
 @media(width>750px) {
-    header, footer {
-        /* padding: calc(3*var(--spacing)); */
-        padding: 5%;
-    }
+    header, footer { padding: 5%; }
 
-    .non-timeline-text-chunk, blockquote, h2, .timeline {
-        /* padding-inline: calc(3*var(--spacing)); */
-        padding-inline: 5%;
-    }
+    .non-timeline-text-chunk, blockquote, h2, .timeline { padding-inline: 5%; }
 
-    blockquote {
-        padding-block: calc(2*var(--spacing));
-    }
-    /*
-    .text-chunk {
-        padding-inline: calc(2*var(--spacing));
-        padding-inline: 0%;
-    } */
+    blockquote { padding-block: calc(2*var(--spacing)); }
 
-    blockquote p {
-        max-inline-size: 60ch;
-        margin-inline: auto;
-        padding-inline: initial;
-        padding-block: calc(0.5*var(--spacing));
-        font-size: calc(1.4*var(--spacing));
-        line-height: calc(2*var(--spacing));
-    }
+    blockquote p { font-size: calc(1.4*var(--spacing)); }
 
-    h1 {
-        max-inline-size: 25ch;
-        font-size: calc(4 * var(--spacing));
-        line-height: calc(4.5 * var(--spacing));
-    }
+    h1 { max-inline-size: 25ch; }
 
-    .timeline {
-        /* margin-inline: calc(3*var(--spacing)); change the calc value to move the blue line */
-        margin-inline: 5%;
-    }
+    .timeline { margin-inline: 5%; }
 
     p{
         inline-size: 80%;
@@ -278,40 +275,25 @@ a:hover {
     }
 
     header p {
-        margin: initial;
         padding-inline-end: var(--spacing);
         padding-block: var(--spacing);
-        align-content: flex-start;
         inline-size: initial;
     }
 
     header ol{
         display:flex;
-        grid-template-rows: auto auto 1fr; 
-        align-items: start;
-  }
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-    /* footer ol:nth-child(2) li { flex-grow: 1; } */
     footer li p{ 
         inline-size: 100%;
-        text-wrap: nowrap;}
-    /* footer ol{
-        inline-size: 100%;
-        grid-template-columns: 1fr 1fr;
-    } */
-
-        /* trying to figure out some stuff here...
-        
-        flex-direction:row;
-        align-items:start;
-        gap: calc(0.5*var(--spacing));
-    } */
+        text-wrap: nowrap;
+    }
 }
 
 @media(width>1100px) {
-    :root{
-        font-size: 110%;
-    }
+    :root{ font-size: 110%; }
     
     header ol {
         display:grid;
@@ -319,46 +301,23 @@ a:hover {
         align-items:start;
     }
 
-    /* header ol:nth-child(3) {
-        flex-grow: 1;
-    }     */
-
     footer ol{
         display:flex;
         justify-content: space-between;
-        /* grid-template-columns: 1fr 1fr; */
     }
-
-    /* 
-    header, footer {
-        padding: calc(4*var(--spacing));
-    }
-
-    .non-timeline-text-chunk, blockquote, h2 {
-    padding-inline: calc(4*var(--spacing));
-    }
-
-    .text-chunk {
-        padding-inline: calc(3*var(--spacing));
-    } */
 
     h1 {
         max-inline-size: 25ch;
-        font-size: calc(4 * var(--spacing));
-        line-height: calc(4.5 * var(--spacing));
-        padding-block-end: calc(5*var(--spacing)); 
+        font-size: calc(4.8 * var(--spacing));
+        line-height: calc(5.2 * var(--spacing));
+        padding-block-end: calc(4*var(--spacing)); 
     }
 
     p {
-        /* font-size: 110%; */
         line-height: calc(2.2*var(--spacing));
         padding-block: var(--spacing);
         max-inline-size: 70%;
     }
-
-    /* footer p{
-        max-inline-size: 100%;
-    } */
 
     blockquote {
         padding-inline: calc(3 * var(--spacing));
@@ -373,9 +332,87 @@ a:hover {
         line-height: calc(2.4*var(--spacing));
     }
 
-    .timeline {
-        margin-inline: calc(4*var(--spacing)); /*change the calc value to move the blue line */
+    .timeline { margin-inline: calc(4*var(--spacing)); }
+}
+
+@media print{
+
+    header p, h1, h2{ color: black; }
+
+    header{ 
+        background-color: var(--white);
+        padding-block-end: initial;
     }
+
+    header p, h1{ padding-block-end: initial; }
+
+    h1{
+        font-size: calc(3.5*var(--spacing));
+        line-height: calc(4*var(--spacing));
+        padding-block-end: calc(2*var(--spacing));
+    }
+
+    .h1-em { color:var(--blue); }
+
+    h2{
+        border: calc(0.1*var(--spacing)) solid var(--dark-blue);
+        font-size: calc(3*var(--spacing)); 
+        padding-block-start: calc(0.2*var(--spacing));
+        padding-block-end: calc(0.8*var(--spacing));
+    }
+
+    h2:first-of-type, blockquote:last-of-type{ break-before: page;}
+
+    h3{
+        padding-inline: initial;
+        margin-block-start: calc(1.75*var(--spacing));
+        margin-block-end: calc(0.25*var(--spacing));
+        inline-size: fit-content;
+        display: inline-block;
+        background-color: var(--white);
+    }
+
+    blockquote{
+        padding-inline-start: 10%;
+        padding-block: initial;
+        background-color: var(--white);
+    }
+
+    .text-chunk{ 
+        padding-block-end: initial; 
+        padding-inline: calc(2*var(--spacing));
+    }
+
+    a { text-decoration: none; }
+
+    p {
+        padding-block: var(--spacing);
+        font-size: calc(0.9*var(--spacing));
+        line-height: calc(1.8*var(--spacing));
+    }
+
+    .highlight{
+        font-style: italic;
+        background-color: var(--highlight);
+    }
+
+    .timeline { z-index: 30; }
+
+    header ol {
+        display: grid;
+        grid-template-columns: 12rem 12rem 1fr;
+        grid-template-areas:
+        "author date  date"
+        "note   note  note";
+        padding-block-end: calc(2*var(--spacing));
+        border-bottom: 0.1rem solid var(--dark-blue);
+    }
+
+    header ol li:nth-child(1) { grid-area: author; }
+    header ol li:nth-child(2) { grid-area: date; }
+    header ol li:nth-child(3) { grid-area: note; }
+
+    footer{ display: none; }
 }
 
 /* ----- for monitor bigger than 16 inch laptop ----- */
@@ -386,122 +423,5 @@ a:hover {
 
     .timeline {
         margin-inline: 20%; /*change the calc value to move the blue line */
-    }
-}
-
-/* @media (width>1200){
-    p {
-        inline-size: 60%;
-    }
-} */
-
-/* @media(width>550px) {
-    :root{
-        font-size: 120%;
-    }
-}
-
-    /* p {
-        max-inline-size: 60ch;
-    } */
-
-    /* h1 {
-        inline-size: ;
-    }
-} */
-
-@media print{
-
-    header p, h1, h2{
-        color: black;
-    }
-
-    header{
-        background-color: white;
-    }
-    header p, h1{
-        padding-block-end: initial;
-    }
-
-    h1{
-        font-size: calc(3*var(--spacing));
-        line-height: calc(3.5*var(--spacing));
-    }
-
-    .h1-em {
-        color:var(--blue);
-    }
-
-    h2{
-        border: calc(0.1*var(--spacing)) solid var(--dark-blue);
-        font-size: calc(2.5*var(--spacing)); 
-        padding-block-start: calc(0.1*var(--spacing));
-        padding-block-end: calc(0.5*var(--spacing));
-    }
-
-    h3{
-        padding-inline: 0;
-        margin-block-start: calc(1.75*var(--spacing));
-        margin-block-end: 0;
-        inline-size: fit-content;
-        display: inline-block;
-        font-size: calc(1.75*var(--spacing));
-        background-color: white;
-    }
-
-    blockquote{
-        padding-inline-start: 10%;
-        padding-block-start: 0;
-        background-color: white;
-    }
-
-    blockquote p:first-child{
-        margin-block-end: calc(6*var(--spacing));
-    }
-
-    a {
-    text-decoration: none;
-    }
-
-    p {
-        padding-block: var(--spacing);
-    }
-
-    .highlight{
-        font-style: italic;
-        background-color: var(--highlight);
-    }
-
-    .text-chunk,
-    .non-timeline-text-chunk{
-        padding-block-end: calc(2*var(--spacing));
-    }
-
-    header{
-        padding-block-end: 0rem;
-        }
-    
-    .text-chunk {
-        padding-inline: calc(2*var(--spacing));
-    }
-
-    .timeline {
-        z-index: 30;
-    }
-
-    header ol {
-        display: grid;
-        grid-template-columns: 12rem 12rem 1fr;
-        grid-template-areas:
-        "author date date"
-        "note   note  note";
-    }
-
-    header ol li:nth-child(1) { grid-area: author; }
-    header ol li:nth-child(2) { grid-area: date; }
-    header ol li:nth-child(3) { grid-area: note; }
-
-    footer{
-        display: none;
     }
 }
