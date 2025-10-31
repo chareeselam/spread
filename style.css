@@ -457,6 +457,10 @@ a:hover {
         align-items:start;
     }
 
+    footer{
+        padding-block: calc(2*var(--spacing));
+    }
+
     footer ol{
         display:flex;
         justify-content: space-between;
@@ -516,10 +520,11 @@ a:hover {
 
     header{ 
         background-color: var(--white);
-        padding-block-end: initial;
+        padding-block-end: calc(1*var(--spacing));
     }
 
-    header p, h1{ padding-block-end: initial; }
+    h1{ padding-block-end: var(--spacing); }
+    header p {padding-block-end: calc(0.5*var(--spacing));}
 
     h1{
         font-size: calc(3.5*var(--spacing));
@@ -531,29 +536,19 @@ a:hover {
 
     h2{
         border: calc(0.1*var(--spacing)) solid var(--dark-blue);
-        font-size: calc(3*var(--spacing)); 
-        padding-block-start: calc(0.2*var(--spacing));
-        padding-block-end: calc(0.8*var(--spacing));
+        font-size: calc(3.2*var(--spacing)); 
+        padding-block-start: calc(0.4*var(--spacing));
+        padding-block-end: calc(1.2*var(--spacing));
         position:static;
-        /* top: initial;
-        z-index: initial; */
         background: none;
+        break-before: auto;
     }
 
-    /* h2:first-child, blockquote:last-of-type,
-    .figure:first-child { 
+    main section:nth-child(3)>h2,
+    main section:nth-child(6)>h2,
+    main section:nth-child(5)>h2{
         break-before: page;
-    } */
-
-      h2 { break-before: auto; }
-
-  /* only the first top-level section’s H2 should start a new page */
-  main > section:first-of-type > h2 { break-before: page; }
-
-  /* keep your other page-break intents */
-  blockquote:last-of-type,
-  .figure:first-of-type { break-before: page; }
-
+    }
 
     h3{
         padding-inline: initial;
@@ -566,13 +561,20 @@ a:hover {
 
     blockquote{
         padding-inline-start: 10%;
-        padding-block: initial;
+        padding-block-start: calc(4*var(--spacing));
         background-color: var(--white);
     }
 
+    .figure{
+        break-inside: avoid;
+    }
+
     .text-chunk{ 
-        padding-block-end: initial; 
+        padding-block-end: calc(3*var(--spacing)); 
         padding-inline: calc(2*var(--spacing));
+    }
+
+    .non-timeline-text-chunk{ padding-block-end: initial;
     }
 
     a { text-decoration: none; }
@@ -588,7 +590,10 @@ a:hover {
         background-color: var(--highlight);
     }
 
-    .timeline { z-index: 30; }
+    .timeline { 
+        z-index: 30; 
+        margin-block-end: initial;
+    }
 
     header ol {
         display: grid;
@@ -606,12 +611,16 @@ a:hover {
 
     footer{ display: none; }
 
-     .figure {
+    .figure {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: calc(2*var(--spacing));
     }
+
+    /* main > section:nth-of-type(1) .figure {
+        margin-block-end: calc(6 * var(--spacing));} */
+
 }
 
 /* ----- for monitor bigger than 16 inch laptop ----- */
@@ -620,6 +629,9 @@ a:hover {
         padding-inline: 20%;
     }
 
+    footer{
+        padding-block: calc(2*var(--spacing));
+    }
     .timeline {
         margin-inline: 20%; /*change the calc value to move the blue line */
     }
