@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+@font-face {
+  font-family: 'Red October';
+  src: url('Type fonts/Red October.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Strengthen';
+  src: url('Type fonts/Strengthen.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kremlin Alexander';
+  src: url('Type fonts/Kremlin Alexander.ttf') format('truetype');
+}
+
+
+
 :root{
     --spacing: 1rem;
     --heading-font: "Playfair Display", serif;
@@ -112,8 +129,8 @@ h3 + p::first-letter {
     font-weight: 700;
 }
 
-.italicize{
-    font-style:italic;
+.italic {
+    font-style: italic;
 }
 
 /* ------------ footer ------------- */
@@ -236,7 +253,7 @@ a:hover {
     background-position: 0 0;
 }
 
-@supports (animation-timeline:view(block)){
+@supports (animation-timeline:view(block)) {
     .highlight{
         background-size: 0% 100%;
         animation-name: highlight;
@@ -254,6 +271,73 @@ a:hover {
     from { background-size: 0% 100%; }   
     to   { background-size: 100% 100%; }
 }
+
+/* ------------ Figures ------------- */
+
+.figure {
+    display: flex;
+    flex-direction: column;
+    margin-block: calc(1.5*var(--spacing));
+    margin-inline-start: 8%;
+    align-items: start;
+    gap: var(--spacing);
+}
+
+.figure > p {
+    font-size: var(--spacing);
+    padding: initial;
+    line-height: calc(1.6*var(--spacing));
+    inline-size: calc(16*var(--spacing));
+}
+
+.symbol {
+    font-size: calc(6*var(--spacing));
+    color: black;
+}
+
+.circle {
+    background: var(--white);
+    inline-size: calc(8*var(--spacing));
+    block-size: calc(8*var(--spacing));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flag {
+    background: red;
+    inline-size: calc(16*var(--spacing));
+    block-size: calc(10*var(--spacing));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cyrillic-1 {
+    font-size: calc(3*var(--spacing));
+    background: rgb(213, 213, 213);
+    font-family: 'Red October', sans-serif;
+}
+
+.cyrillic-2 {
+    font-size: calc(3*var(--spacing));
+    background: rgb(213, 213, 213);
+    font-family: 'Strengthen', sans-serif;
+}
+
+.cyrillic-3 {
+    font-size: calc(3*var(--spacing));
+    background: rgb(213, 213, 213);
+    font-family: 'Kremlin Alexander', sans-serif;
+}
+
+
+
+
+
+
+
 
 /* ------------ media ------------- */
 @media(width>750px) {
@@ -289,6 +373,12 @@ a:hover {
     footer li p{ 
         inline-size: 100%;
         text-wrap: nowrap;
+    }
+
+     .figure {
+        flex-direction: row;
+        align-items: center;
+        gap: calc(2*var(--spacing));
     }
 }
 
@@ -335,6 +425,7 @@ a:hover {
     }
 
     .timeline { margin-inline: calc(4*var(--spacing)); }
+
 }
 
 @media print{
